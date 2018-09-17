@@ -64,7 +64,8 @@
     <app-workflow-trigger [loading]="loading" [project]="project" [workflow]="workflow" [triggerSrcNode]="node" [(trigger)]="newTrigger" (triggerChange)="saveTrigger()" #workflowTrigger></app-workflow-trigger>
 </ng-container>
 <ng-container *ngIf="project && node && node.id === workflow.root.id">
-    <ng-template let-context let-modal="modal" #nodeParentModal>
+    <app-workflow-trigger [loading]="loading" [project]="project" [workflow]="workflow" [triggerSrcNode]="newParentNode" [(trigger)]="newTrigger" (triggerChange)="addNewParentNode()" #workflowTriggerParent></app-workflow-trigger>
+    <!-- <ng-template let-context let-modal="modal" #nodeParentModal>
         <div class="header">{{ 'workflow_node_parent' | translate }}</div>
         <div class="content ui form">
             <app-workflow-node-form [project]="project" [(node)]="newParentNode"></app-workflow-node-form>
@@ -73,7 +74,7 @@
             <button class="ui grey button" [disabled]="loading" (click)="modal.approve(true)">{{ 'common_close' | translate }}</button>
             <button class="ui green button" [disabled]="loading" (click)="addNewParentNode($event)">{{ 'btn_save' | translate }}</button>
         </div>
-    </ng-template>
+    </ng-template> -->
 </ng-container>
 <ng-container *ngIf="node">
     <app-workflow-node-delete [loading]="loading" [node]="node" [isRoot]="node.id === workflow.root.id" (deleteEvent)="deleteNode($event)" #workflowDeleteNode></app-workflow-node-delete>
